@@ -1,0 +1,195 @@
+include /etc/sway/config-vars.d/*
+include /etc/sway/config.d/*
+
+# Programs
+set $lock swaylock -f -c 000000
+set $term foot
+set $launcher bemenu-run | xargs swaymsg exec --
+set $browser firefox
+set $codeEditor foot nano
+set $fileExplorer foot ranger
+set $musicPlayer foot cmus
+set $taskManager foot htop
+set $networkManager foot nmtui
+set $screenshot grim - | wl-copy
+set $soundManager foot alsamixer
+set $regionScreenshot grim -g "$(slurp)" - | wl-copy
+
+# Audio Control Commands
+set $muteAudioOutput wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+set $increaseAudioOutput wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+set $decreaseAudioOutput wpctl set-colume @DEFAULT_AUDIO_SINK@ 5%-
+set $muteAudioInput wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+set $increaseAudioInput wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+
+set $decreaseAudioInput wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-
+
+# Input Configuration
+input * {
+  xkb_layout gb
+}
+
+# Output Configuration
+output * bg #0C050C solid_color
+## output NAME mode 1600x900@143.996002HZ position 0,0
+
+# Keyboard Shortcuts
+
+## Main modifier key
+set $mod Mod1
+
+## Sway:
+  ### Exit Program:
+  bindsym $mod+q kill
+  ### Exit Sway:
+  bindsym $mod+Shift+q exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exist Sway? This will terminate your Wayland session.' -B 'Yes, exit Sway' 'swaymsg exit'
+  ### Reload Sway Configuration:
+  bindsym $mod+Shift+c reload
+  ### Lock Sway:
+  bindsym $mod+l exec $lock
+
+## Programs:
+  ### Start Terminal:
+  bindsym $mod+t exec $term
+  ### Start Launcher:
+  bindsym $mod+a exec $launcher
+  ### Start Browser:
+  bindsym $mod+w exec $browser
+  ### Start Code Editor:
+  bindsym $mod+c exec $codeEditor
+  ### Start File Explorer:
+  bindsym $mod+e exec $fileExplorer
+  ### Start Network Manager:
+  bindsym $mod+n exec $networkManager
+  ### Start Music Player:
+  bindsym $mod+m exec $musicPlayer
+  ### Start Sound Manager:
+  bindsym $mod+v exec $soundManager
+  ### Start Task Manager:
+  bindsym $mod+k exec $taskManager
+
+## Floating Window Dragging:
+  floating_modifier $mod normal
+
+## Change Focus:
+  bindsym $mod+Left focus left
+  bindsym $mod+Down focus down
+  bindsym $mod+Right focus right
+  bindsym $mod+Up focus up
+
+## Move Focused Window:
+  bindsym $mod+Shift+Left move left
+  bindsym $mod+Shift+Down move down
+  bindsym $mod+Shift+Right move right
+  bindsym $mod+Shift+Up move up
+
+## Switch Workspace
+  bindsym $mod+1 workspace number 1
+  bindsym $mod+2 workspace number 2
+  bindsym $mod+3 workspace number 3
+  bindsym $mod+4 workspace number 4
+  bindsym $mod+5 workspace number 5
+  bindsym $mod+6 workspace number 6
+  bindsym $mod+7 workspace number 7
+  bindsym $mod+8 workspace number 8
+  bindsym $mod+9 workspace number 9
+  bindsym $mod+0 workspace number 10
+
+## Move Focused Window to Workspace:
+  bindsym $mod+Shift+1 move container to workspace number 1
+  bindsym $mod+Shift+2 move container to workspace number 2
+  bindsym $mod+Shift+3 move container to workspace number 3
+  bindsym $mod+Shift+4 move container to workspace number 4
+  bindsym $mod+Shift+5 move container to workspace number 5
+  bindsym $mod+Shift+6 move container to workspace number 6
+  bindsym $mod+Shift+7 move container to workspace number 7
+  bindsym $mod+Shift+8 move container to workspace number 8
+  bindsym $mod+Shift+9 move container to workspace number 9
+  bindsym $mod+Shift+0 move container to workspace number 10
+
+## Layouts:
+  ### Split Currently Focused Window:  
+    #### Horizontally:
+    bindsym $mod+p splith
+    #### Vertically:
+    bindsym $mod+o splitv
+  ### Current Container Layout Style
+    #### Stacking
+    bindsym $mod+Shift+j layout stacking
+    #### Tabbed
+    bindsym $mod+Shift+k layout tabbed
+    #### Toggle Split
+    bindsym $mod+Shift+l layout toggle split
+  ### Toggle Fullscreen for Currently Focused Window:
+  bindsym $mod+Return fullscreen
+  ### Toggle Floating Mode for Currently Focused Window:
+  bindsym $mod+Shift+Space floating toggle
+  ### Switch Focus Between Floating and Tiling Areas:
+  bindsym $mod+Space focus mode_toggle
+  ### Move Focus to Parent Container
+  bindsym $mod+Shift+Tab focus parent
+  ### Move Focus to Child in Container
+  bindsym $mod+Tab focus child
+
+## Screenshots:
+  ### Whole Screen:
+  bindsym $mod+s exec $screenshot
+  ### Region:
+  bindsym $mod+Shift+s exec $regionScreenshot
+
+## Scratchpad:
+# Windows can be temporarily moved to a 'scratchpad', to be retrieved to the desktop later.
+  ### Move the Currently Focused Window to the Scratchpad:
+  bindsym $mod+Shift+Minus move scratchpad
+  ### Cycle Stracthpad Windows
+  bindsym $mod+Minus scratchpad show
+
+## Audio Control:
+  ### Output
+  bindsym XF86AudioMute exec $muteAudioOutput
+  bindsym XF86AudioRaiseVolume exec $increaseAudioOutput
+  bindsym XF86AudioLowerVolume exec $decreaseAudioOutput
+
+  ### Input
+  bindsym Shift+XF86AudioMute exec $muteAudioInput
+  bindsym XF86AudioMicMute exec $muteAutioInput
+  bindsym Shift+XF86AudioRaiseVolume exec $increaseAudioInput
+  bindsym Shift+XF86AudioLowerVolume exec $decreaseAudioInput
+
+## Resize Mode:
+  mode "resize" {
+    bindsym Left resize shrink width 10px
+    bindsym Right resize grow width 10px
+    bindsym Up resize shrink height 10px
+    bindsym Down resize grow height 10px
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+  }
+  ### Enter Resize Mode:
+  bindsym $mod+r mode "resize"
+
+# Idle Configuration
+exec swayidle -w timeout 180 'swaylock -f -c 000000' before-sleep 'swaylock -f -c 000000'
+exec swayidle -w timeout 10 'if pgrep -x swaylock; then swaymsg "output * dpms off"; fi' resume 'swaymsg "output * dpms on"'
+exec swayidle -w timeout 600 'if pgrep -x swaylock; then s2ram; fi'
+
+# Status Bar
+bar {
+  swaybar_command waybar
+  position top
+}
+
+# Floaters
+# for_window [app_id="abc"] floating enable
+# for_window [title="def"] floating enable
+# for_window [class="ghi"] floating enable
+
+# Idle Inhibition
+# for_window [SELECTOR] inhibit_idle focus
+# for_window [SELECTOR] inhibit_idle fullscreen
+
+# XWayland Support
+xwayland disable
+
+# Launch pipewire with Sway
+exec dbus-launch --exit-with-session pipewire

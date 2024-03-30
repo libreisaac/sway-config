@@ -1,0 +1,161 @@
+* {
+    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    background: inherit;
+    font-size: inherit;
+    text-shadow: none;
+    box-shadow: none;
+    transition: none;
+    font-size: 12px;
+    border: none;
+    color: #EEE;
+}
+
+window#waybar {
+    background-color: #212;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#mpd,
+#language,
+#keyboard-state,
+button {
+    border-radius: 5px;
+    padding: 0 10px;
+    margin: 5px 2px;
+    border: none;
+    opacity: 1;
+    color: #111;
+}
+
+button {
+    padding: 0 6px;
+}
+
+#workspaces button.focused #mode {
+    background-color: #EEE;
+}
+
+#mode,
+#workspaces button.focused label {
+    color: #111;
+}
+
+#workspaces button.urgent {
+    background-color: #845;
+}
+
+#workspaces button.urgent label {
+    color: #FFF;
+}
+
+#scratchpad {
+    background-color: #323;
+    color: #EEE;
+}
+
+#scratchpad.empty {
+    background: none;
+}
+
+#clock {
+    background: none;
+    color: #EEE;
+}
+
+.modules-left {
+    margin-left: 4px;
+}
+
+.modules-right {
+    margin-right: 4px;
+}
+
+
+#cpu {
+    background-color: #DD6;
+}
+
+#memory {
+    background-color: #D6D;
+}
+
+#backlight {
+    background-color: #6DD;
+}
+
+#network {
+    background-color: #8D8;
+}
+
+#tray {
+    background-color: #88D;
+}
+
+#tray.empty {
+    background: none;
+}
+
+#tray>.needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #845;
+}
+
+#idle_inhibitor {
+    background-color: #28E;
+}
+
+#idle_inhibitor.activated {
+    background-color: #E82;
+}
+
+#battery {
+    background-color: #AFC;
+}
+
+#battery.good {
+    background-color: #CE8;
+}
+
+#battery.warning {
+    background-color: #DA5;
+}
+
+@keyframes-blink {
+    to {
+        background-color: #FFF;
+        color: #000;
+    }
+}
+
+#temperature {
+    background-color: #55E;
+}
+
+#battery.critical,
+#temperature.critical {
+    background-color: #F32;
+    color: #FFF;
+}
+
+#battery.critical:not(.charging):not(.plugged),
+#temperature.critical {
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-direction: alternate;
+    animation-duration: 0.5s;
+    animation-name: blink;
+}

@@ -31,6 +31,7 @@ input * {
 # Output Configuration
 output * bg #0C050C solid_color
 ## output NAME mode 1600x900@143.996002HZ position 0,0
+## run 'swaymsg -t get_outputs' in a terminal to get display device names
 
 # Keyboard Shortcuts
 

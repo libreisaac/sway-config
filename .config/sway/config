@@ -32,6 +32,7 @@ input * {
 output * bg #0C050C solid_color
 ## output NAME mode 1600x900@143.996002HZ position 0,0
 ## run 'swaymsg -t get_outputs' in a terminal to get display device names
+## eg: 'Output [NAME] '...' (focused)'
 
 # Keyboard Shortcuts
 
@@ -194,3 +195,13 @@ xwayland disable
 
 # Launch pipewire with Sway
 exec dbus-launch --exit-with-session pipewire
+
+# Styling
+## Run 'man 5 sway' for more information and options.
+client.focused 9911AA 661177 FFFFFF EE22FF
+client.focused_inactive 330044 220033 CCCCCC
+client.unfocused 330044 220033 CCCCCC
+client.urgent EE0011 CC0022 FFFFFF FF0033
+focus_follows_mouse no
+focus_wrapping yes
+font monospace 12

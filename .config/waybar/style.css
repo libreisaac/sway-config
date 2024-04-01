@@ -45,12 +45,16 @@ button {
     padding: 0 6px;
 }
 
-#workspaces button.focused #mode {
+#workspaces button {
+    background-color: #101;
+    color: #EEE;
+}
+
+#mode, #workspaces button.focused {
     background-color: #EEE;
 }
 
-#mode,
-#workspaces button.focused label {
+#mode, #workspaces button.focused label {
     color: #111;
 }
 
@@ -68,7 +72,7 @@ button {
 }
 
 #scratchpad.empty {
-    background: none;
+	background: none;
 }
 
 #clock {
@@ -83,7 +87,6 @@ button {
 .modules-right {
     margin-right: 4px;
 }
-
 
 #cpu {
     background-color: #DD6;
@@ -109,7 +112,7 @@ button {
     background: none;
 }
 
-#tray>.needs-attention {
+#tray > .needs-attention {
     -gtk-icon-effect: highlight;
     background-color: #845;
 }
@@ -134,7 +137,7 @@ button {
     background-color: #DA5;
 }
 
-@keyframes-blink {
+@keyframes blink {
     to {
         background-color: #FFF;
         color: #000;
@@ -145,14 +148,12 @@ button {
     background-color: #55E;
 }
 
-#battery.critical,
-#temperature.critical {
+#battery.critical, #temperature.critical {
     background-color: #F32;
     color: #FFF;
 }
 
-#battery.critical:not(.charging):not(.plugged),
-#temperature.critical {
+#battery.critical:not(.charging):not(.plugged), #temperature.critical {
     animation-iteration-count: infinite;
     animation-timing-function: linear;
     animation-direction: alternate;

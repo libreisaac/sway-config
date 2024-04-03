@@ -1,0 +1,27 @@
+# Sway
+gui-libs/wlroots drm libinput session
+gui-wm/sway filecaps grimshot swaynag
+media-libs/harfbuzz truetype glib
+media-libs/mesa gles2 zink
+media-libs/freetype png
+
+# Waybar
+gui-apps/waybar pipewire evdev network
+media-fonts/fontawesome ttf
+media-libs/libepoxy egl
+x11-libs/cairo glib
+
+# Suspend to RAM (sleep)
+dev-libs/libgpg-error static-libs
+dev-libs/libgcrypt static-libs
+
+# Firefox
+www-client/firefox system-harfbuzz hwaccel
+media-video/libva-utils vainfo
+dev-lang/python sqlite
+
+# MPV (video player)
+media-libs/libplacebo shaderc
+media-libs/libass fontconfig
+media-video/ffmpeg encode
+media-video/mpv cli

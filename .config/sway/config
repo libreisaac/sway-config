@@ -69,9 +69,6 @@ set $mod Mod1
   ### Start Task Manager:
   bindsym $mod+k exec $taskManager
 
-## Floating Window Dragging:
-  floating_modifier $mod normal
-
 ## Change Focus:
   bindsym $mod+Left focus left
   bindsym $mod+Down focus down
@@ -121,12 +118,17 @@ set $mod Mod1
     bindsym $mod+Shift+k layout tabbed
     #### Toggle Split
     bindsym $mod+Shift+l layout toggle split
+
   ### Toggle Fullscreen for Currently Focused Window:
   bindsym $mod+Return fullscreen
+
   ### Toggle Floating Mode for Currently Focused Window:
   bindsym $mod+Shift+Space floating toggle
   ### Switch Focus Between Floating and Tiling Areas:
   bindsym $mod+Space focus mode_toggle
+  ### Floating Window Dragging:
+  floating_modifier $mod normal
+
   ### Move Focus to Parent Container
   bindsym $mod+Shift+Tab focus parent
   ### Move Focus to Child in Container

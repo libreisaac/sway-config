@@ -18,7 +18,7 @@ set $regionScreenshot grim -g "$(slurp)" - | wl-copy
 # Audio Control Commands
 set $muteAudioOutput wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 set $increaseAudioOutput wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
-set $decreaseAudioOutput wpctl set-colume @DEFAULT_AUDIO_SINK@ 5%-
+set $decreaseAudioOutput wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 set $muteAudioInput wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
 set $increaseAudioInput wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+
 set $decreaseAudioInput wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-
@@ -195,8 +195,9 @@ bar {
 # XWayland Support
 xwayland disable
 
-# Launch pipewire with Sway
+# Launch pipewire & wireplumber with Sway
 exec dbus-launch --exit-with-session pipewire
+exec dbus-launch --exit-with-session wireplumber
 
 # Styling
 ## Run 'man 5 sway' for more information and options.

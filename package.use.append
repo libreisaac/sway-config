@@ -1,4 +1,6 @@
+
 # Sway
+media-video/pipewire sound-server pipewire-alsa
 gui-libs/wlroots drm libinput session
 gui-wm/sway filecaps grimshot swaynag
 media-libs/harfbuzz truetype glib
